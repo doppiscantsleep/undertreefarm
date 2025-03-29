@@ -77,6 +77,8 @@ app.get("*", (c) =>
     </html>`,
   ));
 
-  export const handler = async (request: Request): Promise<Response> => {
-    return app.fetch(request);
-  };
+  export default {
+    async fetch(request: Request): Promise<Response> {
+      return app.fetch(request);
+    }
+  }
