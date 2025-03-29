@@ -77,6 +77,6 @@ app.get("*", (c) =>
     </html>`,
   ));
 
-  export default {
-    fetch: app.fetch
+  export default () => {
+    return new Response(`Hello, from Deno v${Deno.version.deno}!`);
   };
