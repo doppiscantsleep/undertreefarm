@@ -77,4 +77,6 @@ app.get("*", (c) =>
     </html>`,
   ));
 
-Deno.serve(app.fetch);
+  export default {
+    fetch: app.fetch
+  };

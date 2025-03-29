@@ -1,5 +1,5 @@
 {
-	"functions": {
-		"api/**/*.[jt]s": { "runtime": "vercel-deno@3.1.0" }
-	}
-}
+    "buildCommand": "echo 'No build required'",
+    "devCommand": "deno run --allow-net --allow-read api/index.ts",
+    "framework": null
+  }
