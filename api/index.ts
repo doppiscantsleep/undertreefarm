@@ -1,24 +1,25 @@
 // server.ts
 import { Hono } from "jsr:@hono/hono";
-// import { serveStatic } from "jsr:@hono/hono/serve-static";
+import { serveStatic } from "jsr:@hono/hono/serve-static";
+import { handle } from "jsr:@hono/hono/vercel";
 
 const app = new Hono();
 
 // Serve static files from /public
-// app.use(
-//   "/*",
-//   serveStatic({
-//     root: "./public",
-//     getContent: async (path) => {
-//       try {
-//         const file = await Deno.readFile(path);
-//         return new Response(file);
-//       } catch {
-//         return null;
-//       }
-//     },
-//   }),
-// );
+app.use(
+  "/*",
+  serveStatic({
+    root: "./public",
+    getContent: async (path) => {
+      try {
+        const file = await Deno.readFile(path);
+        return new Response(file);
+      } catch {
+        return null;
+      }
+    },
+  }),
+);
 
 // Fallback route to index.html
 app.get("*", (c) =>
@@ -77,8 +78,4 @@ app.get("*", (c) =>
     </html>`,
   ));
 
-  export default {
-    async fetch(request: Request): Promise<Response> {
-      return app.fetch(request);
-    }
-  }
+  export default handle(app)
