@@ -1,5 +1,10 @@
 {
-	"functions": {
-		"api/**/*.[jt]s": { "runtime": "vercel-deno@3.1.0" }
-	}
+    "functions": {
+        "api/**/*.[jt]s": { "runtime": "vercel-deno@3.1.0" }
+    },
+    "routes": [
+        { "src": "/favicon.png", "dest": "/public/favicon.png" },
+        { "src": "/bee.png", "dest": "/public/bee.png" },
+        { "src": "/(.*)", "dest": "/api/index.ts" }
+    ]
 }

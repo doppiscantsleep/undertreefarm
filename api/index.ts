@@ -77,6 +77,6 @@ app.get("*", (c) =>
     </html>`,
   ));
 
-  export default () => {
-    return new Response(`Hello, from Deno v${Deno.version.deno}!`);
+  export const handler = async (request: Request): Promise<Response> => {
+    return app.fetch(request);
   };
